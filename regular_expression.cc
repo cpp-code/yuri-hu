@@ -4,8 +4,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    string str = "123@qq.vip.com,456@gmail.com,789@163.com,abcd@my.com";
-    regex reg("\\w+@\\w+(\\.\\w+)+");
+    string str = "/repos/:owner/:repo/";
+    regex reg("\\w+");
     
     sregex_iterator pos(str.cbegin(), str.cend(), reg);
     decltype(pos) end;
