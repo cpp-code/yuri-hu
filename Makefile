@@ -1,27 +1,25 @@
-all: variable_arguments
+CFLAGS = -Wall -Werror
+
+all: regular_expression variable_arguments dt
 
 variable_arguments: variable_arguments.o
-	gcc -o $@ $^ -Wall -Werror
-
-check: variable_arguments
-	./$<
-
-all: regular_expression
+	gcc -o $@ $^ ${CFLAGS}
 
 regular_expression: regular_expression.o
-	g++ -o $@ $^ -Wall -Werror
+	g++ -o $@ $^ ${CFLAGS}
 
-check: regular_expression
-	@echo Done
+dt: date_time.o
+	g++ -o $@ $^ ${CFLAGS}
+
+check:
+	@echo
 
 distcheck:
 	@echo
 
 clean:
 
-	@rm -vf *.o variable_arguments
-
-	@rm -vf *.o regular_expression
+	@rm -vf *.o variable_arguments regular_expression dt
 
 distclean:
 	@echo
